@@ -14,21 +14,14 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.misc.IOUtils;
  
 //import javax.activation.*;
 
@@ -103,9 +96,8 @@ public class ServidorTcpD extends Thread{
         in=clientSocket.getInputStream();        
     }
     
- public void run()
-   {
-    System.out.println ("New Communication Thread Started");
+    public void run(){
+        System.out.println ("New Communication Thread Started");
         try { 
             boolean connect=true;
             int countIni=0;
@@ -306,12 +298,12 @@ public class ServidorTcpD extends Thread{
         catch (IOException e) 
         { 
          System.err.println("Problem with Communication Server");
-        try {
-            //System.exit(1);
-            conect.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(ServidorTcpD.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                //System.exit(1);
+                conect.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ServidorTcpD.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }  
     }
 }
